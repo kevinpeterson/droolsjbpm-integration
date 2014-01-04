@@ -16,15 +16,14 @@
 
 package org.drools.server;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import org.apache.camel.CamelContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
-
-import org.apache.camel.CamelContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public class CamelServerApp {
 
@@ -43,7 +42,7 @@ public class CamelServerApp {
     }
 
     public String send(String msg) {
-        ClassPathXmlApplicationContext springContext = new ClassPathXmlApplicationContext("classpath:/src/main/filtered-resoures/camel-client.xml");
+        ClassPathXmlApplicationContext springContext = new ClassPathXmlApplicationContext("classpath:/camel-client.xml");
         String batch = "";
         batch += "<batch-execution lookup=\"ksession1\">\n";
         batch += "  <insert out-identifier=\"message\">\n";
